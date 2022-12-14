@@ -18,10 +18,6 @@ class GUI:
         root.configure(bg="#FFFAFA")
 
         # Define fonts and colors
-        sky_color = "#76c3ef"
-        grass_color = "#aad207"
-        output_color = "#dcf0fb"
-        input_color = "#ecf2ae"
         large_font = ('SimSun', 14)
         medium_font = ('SimSun', 12)
         small_font = ('SimSun', 10)
