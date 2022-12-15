@@ -1,0 +1,72 @@
+* CSC226 Project
+
+* Term: Fall 2022
+
+* Author(s)**: Ali Ramazani,
+
+
+**References**:
+Our outside sources are:
+https://www.youtube.com/watch?v=byHcYRpMgI4
+https://pynative.com/python-sqlite/
+https://pynative.com/python-sqlite/#h-change-sqlite-connection-timeout-when-connecting-from-python
+
+These three resources helped me understand how to implement the Sqlite3 database.
+
+
+* Milestone 1: Setup, Planning, Design (due 25 Nov 2022)
+
+**Title**: Electronics Laboratory Assistant
+
+**Purpose**: This program allows students in ETAD lab find equipment as quickly and efficiently as possible.
+
+**Sources**: We code the application from the ground up.
+
+**CRC Card**:
+
+CRC.PNG
+
+![alt text]("image/FinalProjectCRC.png")
+
+---
+
+## Milestone 2: Code (due 2 Dec 2022)
+
+No README action items. You should have some code and a preliminary test suite pushed to your repository. 🙃
+
+---
+
+## Milestone 3: Virtual Check-In (due 9 Dec 2022)
+
+Indicate what percentage of the project you have left to complete and how confident you feel.
+
+Completion Percentage**: 0 - 100%
+%100
+
+Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some strategies you can employ to increase the likelihood that you'll be successful in completing this project before the deadline.
+I feel very confident about this project and about making it better over the breaks.
+---
+
+## Milestone 4: Final Code, Presentation, Demo (14 Dec 2022 for section A, 15 Dec 2022 for section B)
+
+User Instructions
+
+In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button.
+
+First of all, run the program. You'll see the main window. There is a dropdown menu "Select Equipment". After selecting what
+you're looking for, click "find". The equipment's location as well as some basic information about it will be displayed in
+the output/information display frame.
+
+Errors and Constraints
+Every program has bugs or features that had to be scrapped for time. Use this section to create a bullet list of all known errors and deficiencies that remain in your code. Bugs found that aren't acknowledged here will be penalized.
+* One error is the program doesn't upload the jpeg file to the tkinter window.
+* Another problem is when the user selects a second item he's looking for, it'll be displayed below the first. The information
+about the first equipment doesn't clear.
+
+Reflection
+In three to four well-written paragraphs, address the following (at a minimum):
+- Why did you select the project that you did? I'm a TA for the Electronics Lab. I chose this project to make finding tools easier for both myself and the students.
+- How closely did your final project reflect your initial design? Around 80%.
+- What did you learn from this process? I learned Sqlite3 database.
+- What was the hardest part of the final project? The hardest part was connecting the program to the database.
+- What would you do differently next time, knowing what you know now? I'd pay more attention to design than to coding in the initial stages. The reason is I faced  lot of problems at the beginning because I didn't plan well.
