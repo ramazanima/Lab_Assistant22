@@ -1,6 +1,8 @@
 # ------------------------------------------------------------------------------------------------------------------
 
 # Author: Ali Ramazani
+# Professor: Dr. Patrick Shepherd
+# Class: Software Design & Implementation
 # ID: B00794836
 # Final Project | Electronics Laboratory Assistant | Equipment Finder
 # December 13, 2022
