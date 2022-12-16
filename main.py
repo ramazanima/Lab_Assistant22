@@ -1,67 +1,87 @@
 # ------------------------------------------------------------------------------------------------------------------
 # Author: Ali Ramazani
+# Professor: Dr. Patrick Shepherd
+# Class: Software Design & Implementation
 # ID: B00794836
 # Final Project | Electronics Laboratory Assistant | Equipment Finder
 # December 13, 2022
 # --------------------------------------------------------------------------------------------------------------------
 from tkinter import *
 import model
-from PIL import ImageTk
+from PIL import Image, ImageTk
+import os
 
 # Define the main window
 class GUI:
-    def __init__(self, root):
-        root.title("Electronics Lab Assistant")
-        root.iconbitmap("finder_icon.ico")
-        root.geometry("500x500")
-        root.resizable(False, False)
-        root.configure(bg="#FFFAFA")
+    def __init__(self):
+        self.root = Tk()
+        self.root.title("Electronics Lab Assistant")
+        self.root.iconbitmap("finder_icon.ico")
+        self.root.geometry("520x600")
+        self.root.resizable(False, False)
+        self.root.configure(bg="#FFFAFA")
 
         # Define fonts and colors
-        sky_color = "#76c3ef"
-        grass_color = "#aad207"
-        output_color = "#dcf0fb"
-        input_color = "#ecf2ae"
-        large_font = ('SimSun', 14)
-        medium_font = ('SimSun', 12)
-        small_font = ('SimSun', 10)
+        self.large_font = ('SimSun', 14)
+        self.medium_font = ('SimSun', 12)
+        self.small_font = ('SimSun', 10)
 
         # Create frame
-        upper_frame = LabelFrame(root, width=500, height=40, text="Berea College Electronics Laboratory Assistant", font=large_font, bg="#FFFAFA")
-        upper_frame.pack(padx=10, pady=5)
+        self.upper_frame = LabelFrame(self.root, width=500, height=40, text=" Berea College Electronics Laboratory Assistant", font=self.large_font, bg="#FFFAFA")
+        self.upper_frame.grid(padx=10, pady=5)
+        self.upper_frame.grid_propagate(False)
 
         # Define output frame
-        output_frame = LabelFrame(root, width=480, height=300, bg="#FFFAFA")
-        output_frame.pack(pady=5)
-        output_frame.propagate(False)
+        self.output_frame = LabelFrame(self.root, width=500, height=200, bg="#FFFAFA")
+        self.output_frame.grid(pady=5)
+        self.output_frame.grid_propagate(False)
 
-        option_selected = StringVar()
-        default_text = 'Select an equipment'
-        option_selected.set(default_text)
+        self.picture_frame = LabelFrame(self.root, width=500, height=250, bg="#FFFAFA")
+        self.picture_frame.grid(pady=5)
+        self.picture_frame.grid_propagate(False)
 
-        OptionMenu(root, option_selected, *model.get_equipment_names()).pack(padx=10, pady=10)
+        self.option_selected = StringVar()
+        self.default_text = 'Select an equipment'
+        self.option_selected.set(self.default_text)
 
-        label_location = Label(root, text=' ', bg="#FFFAFA")
-        label_description = Label(root, text=' ', bg="#FFFAFA")
+        OptionMenu(self.root, self.option_selected, *model.get_equipment_names()).grid(padx=10, pady=10)
 
-        label_location.pack()
-        label_description.pack()
+        self.label_location_var = StringVar()
+        self.label_location_var.set('')
+        self.label_location = Label(self.output_frame, textvariable=self.label_location_var,
+                                    font=self.medium_font, bg="#FFFAFA", wraplength=500)
+        self.label_description_var = StringVar()
+        self.label_description_var.set('')
+        self.label_description = Label(self.output_frame, textvariable=self.label_description_var,
+                                       font=self.medium_font, bg="#FFFAFA", wraplength=500)
 
-        def find():
-            if option_selected.get() != default_text:
-                info = model.get_info(option_selected.get())
-                Label(output_frame, text='Location : ' + info[0][2], font=medium_font, anchor=CENTER, wraplength=300, bg="#FFFAFA").pack()
-                Label(output_frame, text=info[0][3], font=medium_font, justify=CENTER, wraplength=450, bg="#FFFAFA").pack()
-                Label(output_frame, text=info[0][4], font=medium_font, justify=CENTER, wraplength=450, bg="#FFFAFA").pack()
+        self.label_picture = Label(self.picture_frame, image=None)
+        self.label_picture.image = None
 
-        Button(root, text='Find', font=medium_font, command=find).pack()
+        self.label_location.grid()
+        self.label_description.grid()
+        self.label_picture.place(relx=0.5, rely=0.5, anchor=CENTER)
 
+        Button(self.root, text='Find', font=self.medium_font, command=self.find).grid()
+
+        self.root.mainloop()
+
+    def find(self):
+        if self.option_selected.get() != self.default_text:
+            info = model.get_info(self.option_selected.get())
+            self.label_location_var.set('Location : ' + info[0][2])
+            self.label_description_var.set(info[0][3])
+
+            path = os.path.join(os.getcwd() + info[0][4].replace('/', '\\'))
+            im = Image.open(path).resize((200, 200))
+            ph = ImageTk.PhotoImage(im)
+
+            self.label_picture.configure(image=ph)
+            self.label_picture.image = ph
+            self.root.update()
 
 def main():
     # Define root window
-    root = Tk()
-    # Make a root window object
-    GUI(root)
-    # Closes the mainloop
-    root.mainloop()
+    GUI()
+
 main()
