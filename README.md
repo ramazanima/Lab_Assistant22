@@ -1,3 +1,3 @@
-This is a picure of my project.
+This is a picture of my lab assistant application for the electronics students at Berea College. This application allows students to find lab items easily by simply entering the name of the tool they are looking for and then its location (AA1, AA2,...), a brief description of the tool along with a picutre of the tool will be displayed. This has increased lab efficiency significantly as students are no longer dependent on TAs and Lab Assistants to help them find the tools and equipment they need. I coded this app using 100% Python. 
 
 ![labassistant](https://user-images.githubusercontent.com/112561860/223564237-dd158618-4282-4435-9ca2-9433b51d4af1.PNG)
